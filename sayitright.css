@@ -1,0 +1,11 @@
+header{
+	/*background: #0000ff;*/	
+}
+
+ul{
+	float: right;
+}
+
+ul li{
+	display: inline;
+}
