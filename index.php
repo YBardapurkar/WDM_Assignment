@@ -1,16 +1,30 @@
-<!doctype html>
-<head>
-	<title> SayItRight</title>
-</head>
-<body>
-	<?php
-		if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
-			$uri = 'https://';
+<?php  
+	require 'header.php';
+?>
+
+<main>
+	<?php 
+		echo implode(" | ",$_SESSION);
+		echo '<br>';
+		if (!$_SESSION) {
+			echo("logged out");
 		} else {
-			$uri = 'http://';
+			echo($_SESSION['email']." logged in");
 		}
-		$uri .= $_SERVER['HTTP_HOST'];
-		header('Location: '.$uri.'/sayitright/home.html');
-	exit;
 	?>
-</body>
+	<nav>
+		body menu
+	</nav>
+	<section>
+		<aside>
+			...
+		</aside>
+	</section>
+	<section>
+		...
+	</section>
+</main>
+
+<?php  
+	require 'footer.php';
+?>
