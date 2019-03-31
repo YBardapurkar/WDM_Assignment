@@ -2,16 +2,22 @@
 	require 'header.php';
 ?>
 
-<main>
-	<div class="wrapper_main">
-		<form action="includes/login.inc.php" method="post">
-			<input type="email" name="email" placeholder="Email"><br>
-			<input type="password" name="password" placeholder="password"><br><br>
+	<main>
+		<div class="banner-top">
+			<p>Home <i class="fas fa-arrow-right"></i> LOGIN</p>
+			<h1>Login</h1>
+		</div>
+		<div id="wrapper" class="login">
+			<form class="login-form" action="includes/login.inc.php" method="post">
+				<div>
+					<input type="email" name="email" placeholder="Enter Email">
+					<input type="password" name="password" placeholder="Enter Password">
 
-			<input type="submit" name="login_submit">
-		</form>
-	</div>
-</main>
+					<input type="submit" name="login_submit" value="Submit" class="button-color">
+				</div>
+			</form>
+		</div>
+	</main>
 
 <?php  
 	require 'footer.php';
