@@ -1,24 +1,16 @@
-<?php 
-	session_start() 
-?>
-
-<html>
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>SayItRight</title>
-	<link rel="stylesheet" href="css/sayitright.css" />
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-	<link rel="shortcut icon" href="imgsay/favicon.png"/>
-</head>
-
-<body>
-	<header>
-		<?php
-			if ($_SESSION) {
-				require 'nav_auth.php';
-			} else {
-				require 'nav.php';
-			}	
-		?>
-	</header>
+<header>
+	<nav id="nav">
+		<div class="nav-logo">
+			<img src="imgsay/favicon.png" alt="logo" />
+		</div>
+		<ul>
+			<li><a href="index.php">Home</a></li>
+			<li><a href="about.php">About Us</a></li>
+			<li><a href="browse.html">Blog</a></li>
+			<li><a href="buy_from_us.php">Buy from us</a></li>
+			<li><a href="contact.php">Contact</a></li>
+			<li><a href="signup_individual.php">Sign Up</a></li>
+			<li><a href="login.php">Login</a></li>
+		</ul>
+	</nav>
+</header>
