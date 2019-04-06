@@ -13,15 +13,13 @@
 </head>
 
 <body>
-	<header>
-		<?php
-			if ($_SESSION) {
-				require 'header_auth.php';
-			} else {
-				require 'header.php';
-			}	
-		?>
-	</header>
+	<?php
+		if ($_SESSION) {
+			require 'header_auth.php';
+		} else {
+			require 'header.php';
+		}	
+	?>
 	<main>
 		<?php 
 			echo implode(" | ",$_SESSION);
@@ -43,10 +41,10 @@
 				<h1>Subscribe Our Newsletter</h1>
 				<p>We won't send any kind of spam</p>
 			</div>
-			<form>
+			<form action="php/newsletter.controller.php" method="post">
 				<div>
 					<input type="text" name="email">
-					<input type="submit" name="submit" value="Subscribe">
+					<input type="submit" name="newsletter_submit" value="Subscribe">
 				</div>				
 			</form>
 		</div>
