@@ -11,7 +11,7 @@
 			<li><a href="list_of_my_events.php">My Events</a></li>
 			<li><a href="profile.php">Profile</a></li>
 			<li>
-				<form action="includes/logout.inc.php" method="post">
+				<form action="php/logout.controller.php" method="post">
 					<button type="submit" name="logout_submit">Logout</button>
 				</form>
 			</li>

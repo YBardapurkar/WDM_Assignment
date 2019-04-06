@@ -26,7 +26,7 @@
 			<h1>Login</h1>
 		</div>
 		<div id="wrapper" class="login">
-			<form class="login-form" action="includes/login.inc.php" method="post">
+			<form class="login-form" action="php/login.controller.php" method="post">
 				<div>
 					<input type="email" name="email" placeholder="Enter Email" required="true">
 					<input type="password" name="password" placeholder="Enter Password" required="true">

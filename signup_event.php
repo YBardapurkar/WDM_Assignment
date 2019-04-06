@@ -26,7 +26,7 @@
 			<h1>SIGN UP</h1>
 		</div>
 		<div id="wrapper" class="signup-div">
-			<form class="signup-form" action="includes/signup.inc.php" method="post">
+			<form class="signup-form" action="php/signup_event.controller.php" method="post">
 				<h2 class="center-heading">Select the type of user</h2>
 				<ul class="user-type">
 					<li>
@@ -44,7 +44,7 @@
 				<input type="text" name="lastName" placeholder="Enter Last Name">
 				<input type="email" name="email" placeholder="Enter Email">
 				<input type="password" name="password" placeholder="Enter Password">
-				<input type="submit" name="signup-individual-submit" value="Send" class="button-color">
+				<input type="submit" name="signup_event_submit" value="Send" class="button-color">
 			</form>
 		</div>
 	</main>
