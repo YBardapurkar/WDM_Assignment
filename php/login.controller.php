@@ -26,6 +26,7 @@
 
 		// login, create session
 		session_start();
+		$_SESSION['id'] = $row['id'];
 		$_SESSION['firstName'] = $row['firstName'];
 		$_SESSION['lastName'] = $row['lastName'];
 		$_SESSION['role'] = $row['role'];
