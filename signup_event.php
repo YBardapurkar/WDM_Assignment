@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="css/sayitright.css" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link rel="shortcut icon" href="imgsay/favicon.png"/>
+	<script src="js/signup_event.js"></script>
 </head>
 
 <body>
@@ -26,7 +27,7 @@
 			<h1>SIGN UP</h1>
 		</div>
 		<div id="wrapper" class="signup-div">
-			<form class="signup-form" action="php/signup_event.controller.php" method="post">
+			<form class="signup-form" name="signup_event_form" onsubmit="return validateForm();" action="php/signup_event.controller.php" method="post">
 				<h2 class="center-heading">Select the type of user</h2>
 				<ul class="user-type">
 					<li>

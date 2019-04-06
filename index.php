@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="css/sayitright.css" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link rel="shortcut icon" href="imgsay/favicon.png"/>
+	<script src="js/newsletter.js"></script>
 </head>
 
 <body>
@@ -41,9 +42,9 @@
 				<h1>Subscribe Our Newsletter</h1>
 				<p>We won't send any kind of spam</p>
 			</div>
-			<form action="php/newsletter.controller.php" method="post">
+			<form name="newsletter_form" onsubmit="return validateForm();" action="php/newsletter.controller.php" method="post">
 				<div>
-					<input type="text" name="email">
+					<input type="email" name="email">
 					<input type="submit" name="newsletter_submit" value="Subscribe">
 				</div>				
 			</form>
