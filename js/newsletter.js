@@ -7,8 +7,9 @@ function validateForm() {
 		alert("Email is empty");
 		return false;
 	}
-	if(!(x.match(mailformat))) {
+	if(!mailformat.test(x)) {
 		alert("Enter valid email address");
 		return false;
 	}
+	return true;
 }
