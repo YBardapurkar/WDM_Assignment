@@ -1,5 +1,5 @@
-<?php 
-	session_start() 
+<?php
+	session_start()
 ?>
 
 <html>
@@ -19,10 +19,10 @@
 			require 'header_auth.php';
 		} else {
 			require 'header.php';
-		}	
+		}
 	?>
 	<main>
-		<?php 
+		<?php
 			echo implode(" | ",$_SESSION);
 			echo '<br>';
 			if (!$_SESSION) {
@@ -46,11 +46,11 @@
 				<div>
 					<input type="email" name="email">
 					<input type="submit" name="newsletter_submit" value="Subscribe">
-				</div>				
+				</div>
 			</form>
 		</div>
 	</main>
-	<?php  
+	<?php
 		require 'footer.php';
 	?>
 </body>

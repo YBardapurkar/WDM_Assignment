@@ -1,5 +1,23 @@
-<?php 
-	session_start() 
+<?php
+	session_start();
+
+	require 'php/config.php';
+
+	if (isset($_GET)) {
+
+		// check if session exists
+		$role = $_SESSION['role'];
+		if ($role == null) {
+			header("Location: login.php?error=auth");
+			exit();
+		}
+
+		// get all events
+		$query = "SELECT * FROM events";
+		$stmt = $db->prepare($query);
+		$stmt->execute();
+		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	}
 ?>
 
 <html>
@@ -18,49 +36,50 @@
 			require 'header_auth.php';
 		} else {
 			require 'header.php';
-		}	
+		}
 	?>
 	<main>
 		<div id="wrapper">
 			<h2>List of Events</h2>
-			<table class="list-of-events">
-				<thead>
-					<tr>
-						<th>Events</th>
-						<th>Description</th>
-						<th>Date</th>
-						<th>City</th>
-						<th>Confirmation</th>
-					</tr>
-				</thead>
-				<tfoot></tfoot>
-				<tbody>
-					<tr>
-						<td>Oratory</td>
-						<td>Is the art of making formal speeches which strongly affect people's feelings and beliefs.</td>
-						<td>25 April 2019</td>
-						<td>Boston</td>
-						<td>Confirm</td>
-					</tr>
-					<tr>
-						<td>Vocalization</td>
-						<td>A sound, you use you voice to make it, especially by singing it.</td>
-						<td>25 April 2019</td>
-						<td>Texas</td>
-						<td>Confirm</td>
-					</tr>
-					<tr>
-						<td>Social Communication</td>
-						<td>The formation of a stable structure of relations inside a broup, which provides a basis for order and patterns relationship for new members</td>
-						<td>25 April 2019</td>
-						<td>Detroit</td>
-						<td>Confirm</td>
-					</tr>
-				</tbody>
-			</table>
+			<?php
+				$numEvents = count($rows, COUNT_NORMAL);
+				if ($numEvents > 0) {
+					echo '<table class="list-of-events">
+						<thead>
+							<tr>
+								<th>Events</th>
+								<th class="column-description">Description</th>
+								<th>Date</th>
+								<th>City</th>
+								<th>Confirmation</th>
+							</tr>
+						</thead>
+						<tfoot></tfoot>
+						<tbody>';
+					foreach ($rows as $row) {
+						echo '<tr>';
+						echo '<td>'.$row['name'].'</td>';
+						echo '<td>'.$row['description'].'</td>';
+						$date = date_create($row['eventDate']);
+						echo '<td>'.date_format($date,"d M, Y").'</td>';
+						echo '<td>'.$row['venue'].'</td>';
+						echo '<td>
+							<form action="php/events.controller.php" method="post">
+								<input type="hidden" name="eventId" value="'.$row['id'].'" />
+								<button type="submit" name="add_to_my_events_submit">Confirm</button>
+							</form>
+						</td>';
+						echo '</tr>';
+					}
+					echo '</tbody>
+					</table>';
+				} else {
+					echo "No events found";
+				}
+			?>
 		</div>
 	</main>
-	<?php  
+	<?php
 		require 'footer.php';
 	?>
 </body>

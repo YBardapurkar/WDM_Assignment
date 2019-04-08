@@ -1,6 +1,6 @@
 *{
 	margin: 0;
-	padding: 0;	
+	padding: 0;
 	font-family: Verdana, Arial, sans-serif;
 }
 
@@ -96,7 +96,7 @@ main .banner-top{
 	color: white;
 }
 
-main .banner-top h1, 
+main .banner-top h1,
 main .banner-top p {
 	padding: 10px;
 	text-align: center;
@@ -104,24 +104,24 @@ main .banner-top p {
 
 main .banner-bottom {
 	height: 100px;
-	
-	background: linear-gradient(to right, #3fcaff 0%, #a4ffb0 51%, #3fcaff 100%); 
-	background-size: 200% auto; 
-	padding: 35px; 
+
+	background: linear-gradient(to right, #3fcaff 0%, #a4ffb0 51%, #3fcaff 100%);
+	background-size: 200% auto;
+	padding: 35px;
 	color: #000033;
 }
 
 .left {
 	position: relative;
 	display: inline-block;
-	width: 49%;	
+	width: 49%;
 	padding: 10px 0;
 }
 
 .right {
 	position: relative;
 	display: inline-block;
-	width: 49%;	
+	width: 49%;
 }
 
 main .newsletter form  {
@@ -145,8 +145,8 @@ main .newsletter input[type="submit"] {
 	border: 0;
 	border-radius: 20px;
 
-	background: linear-gradient(to right, #3fcaff 0%, #a4ffb0 51%, #3fcaff 100%); 
-	background-size: 200% auto; 
+	background: linear-gradient(to right, #3fcaff 0%, #a4ffb0 51%, #3fcaff 100%);
+	background-size: 200% auto;
 	color: #000033;
 	font-size: 0.7em;
 	text-transform: uppercase;
@@ -154,8 +154,8 @@ main .newsletter input[type="submit"] {
 
 /* common */
 .button-color {
-	background: linear-gradient(to right, #3fcaff 0%, #a4ffb0 51%, #3fcaff 100%); 
-	background-size: 200% auto; 
+	background: linear-gradient(to right, #3fcaff 0%, #a4ffb0 51%, #3fcaff 100%);
+	background-size: 200% auto;
 	color: #000033;
 	font-size: 0.7em;
 	text-transform: uppercase;
@@ -353,8 +353,8 @@ footer p {
 	border: 0;
 	border-radius: 5px;
 
-	background: linear-gradient(to right, #3fcaff 0%, #a4ffb0 51%, #3fcaff 100%); 
-	background-size: 200% auto; 
+	background: linear-gradient(to right, #3fcaff 0%, #a4ffb0 51%, #3fcaff 100%);
+	background-size: 200% auto;
 	color: #000033;
 	font-size: 0.8em;
 	text-transform: uppercase;
@@ -385,8 +385,8 @@ footer p {
 	border: 0;
 	border-radius: 20px;
 
-	background: linear-gradient(to right, #3fcaff 0%, #a4ffb0 51%, #3fcaff 100%); 
-	background-size: 200% auto; 
+	background: linear-gradient(to right, #3fcaff 0%, #a4ffb0 51%, #3fcaff 100%);
+	background-size: 200% auto;
 	color: #000033;
 	font-size: 0.7em;
 	text-decoration: none;
@@ -487,6 +487,7 @@ footer p {
 .list-of-events {
 	border-collapse: collapse;
 	font-size: 0.8em;
+	width: 100%;
 }
 
 .list-of-events td,
@@ -495,11 +496,17 @@ footer p {
 	padding: 10px;
 }
 
+.list-of-events th.column-description {
+	width: 65%;
+	min-width: 65%;
+}
+
 /* contact us */
 .contact-us-form .column {
 	position: relative;
 	max-width: 50%;
 	width: 49%;
+	height: 180px;
 	display: inline-block;
 }
 
@@ -566,7 +573,7 @@ footer p {
 	text-align: center;
 }
 /*.user-type h2,
-.user-type ul, 
+.user-type ul,
 .user-type p {
 	text-align: center;
 }*/
@@ -675,4 +682,3 @@ footer p {
 		max-width: 32%;
 	}
 }
-
