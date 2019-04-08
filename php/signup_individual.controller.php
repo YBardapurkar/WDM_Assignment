@@ -10,8 +10,23 @@
 		$password = $_POST['password'];
 
 		// check if empty
-		if (empty($firstName) || empty($lastName) || empty($placeOfWork) || empty($school) || empty($email) || empty($password)) {
-			header("Location: ../signup_individual.php?error=empty");
+		if (empty($firstName)) {
+			header("Location: ../signup_individual.php?error=empty_firstName");
+			exit();
+		} else if (empty($lastName)) {
+			header("Location: ../signup_individual.php?error=empty_lastName");
+			exit();
+		} else if (empty($placeOfWork)) {
+			header("Location: ../signup_individual.php?error=empty_placeOfWork");
+			exit();
+		} else if (empty($school)) {
+			header("Location: ../signup_individual.php?error=empty_school");
+			exit();
+		} else if (empty($email)) {
+			header("Location: ../signup_individual.php?error=empty_email");
+			exit();
+		} else if (empty($password)) {
+			header("Location: ../signup_individual.php?error=empty_password");
 			exit();
 		}
 

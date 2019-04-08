@@ -8,8 +8,17 @@
 		$password = $_POST['password'];
 
 		// check if empty
-		if (empty($firstName) || empty($lastName) || empty($email) || empty($password)) {
-			header("Location: ../signup_event.php?error=empty");
+		if (empty($firstName)) {
+			header("Location: ../signup_event.php?error=empty_firstName");
+			exit();
+		} else if (empty($lastName)) {
+			header("Location: ../signup_event.php?error=empty_lastName");
+			exit();
+		} else if (empty($email)) {
+			header("Location: ../signup_event.php?error=empty_email");
+			exit();
+		} else if (empty($password)) {
+			header("Location: ../signup_event.php?error=empty_password");
 			exit();
 		}
 

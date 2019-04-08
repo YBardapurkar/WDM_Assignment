@@ -3,13 +3,22 @@
 
 	if (isset($_POST['signup_business_submit'])) {
 		$firstName = $_POST['firstName'];
-		$lastName = $_POST['businessType'];
+		$businessType = $_POST['businessType'];
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 
 		// check if empty
-		if (empty($firstName) || empty($businessType) || empty($email) || empty($password)) {
-			header("Location: ../signup_event.php?error=empty");
+		if (empty($firstName)) {
+			header("Location: ../signup_business.php?error=empty_name");
+			exit();
+		} else if (empty($businessType)) {
+			header("Location: ../signup_business.php?error=empty_businessType");
+			exit();
+		} else if (empty($email)) {
+			header("Location: ../signup_business.php?error=empty_email");
+			exit();
+		} else if (empty($password)) {
+			header("Location: ../signup_business.php?error=empty_password");
 			exit();
 		}
 

@@ -6,7 +6,7 @@
 
 		// check if empty
 		if (empty($email)) {
-			header("Location: ../index.php?error=empty");
+			header("Location: ../index.php?error=empty_email");
 			exit();
 		}
 
