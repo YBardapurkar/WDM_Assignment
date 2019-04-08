@@ -1,5 +1,6 @@
 <?php 
-	session_start() 
+	session_start();
+	require 'php/config.php';
 ?>
 
 <html>
@@ -27,10 +28,14 @@
 			<h1>Login</h1>
 		</div>
 		<div id="wrapper" class="login">
-			<form class="login-form" name="login_form" onsubmit="return validateForm();" action="php/login.controller.php" method="post">
+			<form class="login-form" name="login_form" action="php/login.controller.php" method="post"
+			<?php 
+			if (!$htmlValidate) { echo ' novalidate'; }
+			if ($jsValidate) { echo ' onsubmit="return validateForm();"'; } 
+			?> >
 				<div>
-					<input type="email" name="email" placeholder="Enter Email">
-					<input type="password" name="password" placeholder="Enter Password">
+					<input type="email" name="email" placeholder="Enter Email" required>
+					<input type="password" name="password" placeholder="Enter Password" required>
 
 					<input type="submit" name="login_submit" value="Submit" class="button-color">
 				</div>

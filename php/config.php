@@ -1,8 +1,8 @@
 <?php
 
 	$dbServerName = "localhost";
-	$dbUsername = "sayitright_web";
-	$dbPassword = "abcd123456";
+	$dbUsername = "dbUsername";
+	$dbPassword = "dbPassword";
 	$dbName = "sayitright";
 
 	ini_set('display_errors', 1);
@@ -13,4 +13,6 @@
 	if(!$db) {
 		die("Connection failed");
 	}
-?>
+
+	$htmlValidate = true;
+	$jsValidate = true;

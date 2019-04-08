@@ -1,5 +1,6 @@
 <?php 
-	session_start() 
+	session_start();
+	require 'php/config.php';
 ?>
 
 <html>
@@ -27,7 +28,11 @@
 			<h1>SIGN UP</h1>
 		</div>
 		<div id="wrapper" class="signup-div">
-			<form class="signup-form" name="signup_individual_form" onsubmit="return validateForm();" action="php/signup_individual.controller.php" method="post">
+			<form class="signup-form" name="signup_individual_form" action="php/signup_individual.controller.php" method="post"
+			<?php 
+			if (!$htmlValidate) { echo ' novalidate'; }
+			if ($jsValidate) { echo ' onsubmit="return validateForm();"'; } 
+			?> >>
 				<h2 class="center-heading">Select the type of user</h2>
 				<ul class="user-type">
 					<li>
@@ -41,12 +46,12 @@
 					</li>
 				</ul>
 				<p class="center-text">Welcome to the Individual registration</p>
-				<input type="text" name="firstName" placeholder="Enter First Name">
-				<input type="text" name="lastName" placeholder="Enter Last Name">
-				<input type="text" name="placeOfWork" placeholder="Enter Place of Work">
-				<input type="text" name="school" placeholder="Enter School">
-				<input type="email" name="email" placeholder="Enter Email">
-				<input type="password" name="password" placeholder="Enter Password">
+				<input type="text" name="firstName" placeholder="Enter First Name" required>
+				<input type="text" name="lastName" placeholder="Enter Last Name" required>
+				<input type="text" name="placeOfWork" placeholder="Enter Place of Work" required>
+				<input type="text" name="school" placeholder="Enter School" required>
+				<input type="email" name="email" placeholder="Enter Email" required>
+				<input type="password" name="password" placeholder="Enter Password" required>
 				<input type="submit" name="signup_individual_submit" value="Send" class="button-color">
 			</form>
 		</div>

@@ -1,5 +1,6 @@
 <?php 
-	session_start() 
+	session_start();
+	require 'php/config.php';
 ?>
 
 <html>
@@ -27,7 +28,11 @@
 			<h1>SIGN UP</h1>
 		</div>
 		<div id="wrapper" class="signup-div">
-			<form class="signup-form" name="signup_business_form" onsubmit="return validateForm()" action="php/signup_business.controller.php" method="post">
+			<form class="signup-form" name="signup_business_form" action="php/signup_business.controller.php" method="post"
+			<?php 
+			if (!$htmlValidate) { echo ' novalidate'; }
+			if ($jsValidate) { echo ' onsubmit="return validateForm();"'; } 
+			?> >>
 				<h2 class="center-heading">Select the type of user</h2>
 				<ul class="user-type">
 					<li>
@@ -43,10 +48,10 @@
 				<p class="center-text">Welcome to the Business registration</p>
 				<label>Select Type of Company: </label>
 				<input type="radio" name="businessType" value="university"> University
-  				<input type="radio" name="businessType" value="company"> Company
-  				<input type="text" name="firstName" placeholder="Enter Name">
-				<input type="email" name="email" placeholder="Enter Email">
-				<input type="password" name="password" placeholder="Enter Password">
+  				<input type="radio" name="businessType" value="company" checked> Company
+  				<input type="text" name="firstName" placeholder="Enter Name" required>
+				<input type="email" name="email" placeholder="Enter Email" required>
+				<input type="password" name="password" placeholder="Enter Password" required>
 				<input type="submit" name="signup_business_submit" value="Send" class="button-color">
 			</form>
 		</div>
