@@ -1,13 +1,10 @@
 <?php
-	
-?>
-<?php 
 	session_start();
 
 	if (isset($_GET)) {
 		require 'php/config.php';
 
-		// check if session exists
+		// check if logged in
 		$email = $_SESSION['email'];
 		if ($email == null) {
 			header("Location: login.php?error=auth");
@@ -38,26 +35,34 @@
 			require 'header_auth.php';
 		} else {
 			require 'header.php';
-		}	
+		}
 	?>
 	<main>
 		<div id="wrapper">
 			<h2 class="center-heading">Welcome to your profile</h2>
-			
+
 			<div class="row">
 				<div class="profile-photo-column">
-					<form class="profile-photo-form" class="profile-photo-form">
+					<!-- <form class="profile-photo-form" action="php/profile.controller.php" method="post" enctype="multipart/form-data"> -->
+					<form class="profile-photo-display">
 						<figure>
-							<img src="imgsay/user.jpg">
+							<?php
+							if (file_exists($row['profilePicture'])) {
+								echo '<img src="'.$row['profilePicture'].'">'; 
+							} else {
+								echo '<img src="imgsay/user.jpg">';
+							}
+							?>
 							<figcaption></figcaption>
 						</figure>
-
-						<input type="submit" name="profile-photo-submit" value="Change Photo" class="button-color">
+						<input id="myBtn" type="button" name="profile-photo-submit" value="Change Photo" class="button-color">
+						<!-- <input type="file" name="newProfilePic" id="newProfilePic">
+						<input type="submit" name="profile_photo_submit" value="Change Photo" class="button-color"> -->
 					</form>
 				</div>
 				<div class="profile-details-column">
 					<form class="profile-details-form">
-						<input type="text" name="firstName" placeholder="Enter First Name" 
+						<input type="text" name="firstName" placeholder="Enter First Name"
 						value="<?php echo $row['firstName']; ?>">
 						<input type="text" name="lastName" placeholder="Enter Last Name"
 						value="<?php echo $row['lastName']; ?>">
@@ -74,9 +79,30 @@
 				</div>
 			</div>
 		</div>
+		<div id="modal-new-profile-photo" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<form id="profile-photo-form" class="profile-photo-form" action="php/profile.controller.php" method="post" enctype="multipart/form-data">
+					<figure>
+						<?php
+						if (file_exists($row['profilePicture'])) {
+							echo '<img id="newProfilePicImage" src="'.$row['profilePicture'].'">'; 
+						} else {
+							echo '<img id="newProfilePicImage" src="imgsay/user.jpg">';
+						}
+						?>
+						<figcaption></figcaption>
+					</figure>
+					<input type="file" name="newProfilePic" id="newProfilePic">
+					<input type="submit" name="profile_photo_submit" value="Change Photo" class="button-color">
+				</form>
+			</div>
+		</div>
 	</main>
-	<?php  
+	<?php
 		require 'footer.php';
 	?>
-</body>
+</body>	
+<script type="text/javascript" src="js/profile.js"></script>
 </html>
