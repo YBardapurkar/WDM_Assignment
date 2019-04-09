@@ -483,6 +483,10 @@ footer p {
 	width: auto;
 }
 
+.profile-photo-display #profile-photo-change-button {
+	width: auto;
+}
+
 .profile-photo-form input[type="submit"],
 .profile-details-form input[type="submit"] {
 	width: auto;
@@ -503,7 +507,7 @@ footer p {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.modal-content {
+.modal .modal-content {
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
@@ -511,7 +515,7 @@ footer p {
   width: 50%;
 }
 
-.close {
+.modal .modal-content .close {
   color: #aaaaaa;
   float: right;
   font-size: 28px;

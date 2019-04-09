@@ -1,5 +1,5 @@
 var modal = document.getElementById('modal-new-profile-photo');
-var btn = document.getElementById("myBtn");
+var btn = document.getElementById("profile-photo-change-button");
 var span = document.getElementsByClassName("close")[0];
 
 var fileInput = document.getElementById('newProfilePic');

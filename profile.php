@@ -55,7 +55,7 @@
 							?>
 							<figcaption></figcaption>
 						</figure>
-						<input id="myBtn" type="button" name="profile-photo-submit" value="Change Photo" class="button-color">
+						<input id="profile-photo-change-button" type="button" name="profile-photo-submit" value="Change Photo" class="button-color">
 						<!-- <input type="file" name="newProfilePic" id="newProfilePic">
 						<input type="submit" name="profile_photo_submit" value="Change Photo" class="button-color"> -->
 					</form>
