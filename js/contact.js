@@ -1,5 +1,5 @@
 function validateForm() {
-	var formName = "login_form";
+	var formName = "contact_form";
 	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	var phoneformat = /^\(?([2-9][0-8][0-9])\)?\W{0,1}([2-9][0-9]{2})\W{0,1}([0-9]{4})$/;
 

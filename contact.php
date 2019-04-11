@@ -1,5 +1,6 @@
 <?php 
-	session_start() 
+	session_start();
+	require 'php/validation.php';
 ?>
 
 <html>
@@ -29,7 +30,10 @@
 		</div>
 		<div id="wrapper">
 			<h2 class="center-heading">Contact Us</h2>
-			<form class="contact-us-form" name="contact_form" action="php/contact.controller.php" method="post" onsubmit="return validateForm();" novalidate>
+			<form class="contact-us-form" name="contact_form" action="php/contact.controller.php" method="post" <?php 
+			if (!$htmlValidate) { echo ' novalidate'; }
+			if ($jsValidate) { echo ' onsubmit="return validateForm();"'; } 
+			?> >
 				<div class="row">
 					<div class="column">
 						<input type="text" name="firstName" placeholder="Enter First Name" required>

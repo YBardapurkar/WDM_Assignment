@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	require 'php/validation.php';
 
 	if (isset($_GET)) {
 		require 'php/config.php';

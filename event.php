@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	require 'php/validation.php';
 ?>
 
 <html>
@@ -24,7 +25,11 @@
 	<main>
 		<div id="wrapper" class="signup-div">
 			<h2 class="center-heading">Add New Event</h2>
-			<form class="contact-us-form" name="event_add_form" action="php/events.controller.php" method="post">
+			<form class="contact-us-form" name="event_add_form" action="php/events.controller.php" method="post"
+			<?php 
+			if (!$htmlValidate) { echo ' novalidate'; }
+			if ($jsValidate) { echo ' onsubmit="return validateForm();"'; } 
+			?> >
 				<div class="row">
 					<div class="column">
 						<input type="text" name="eventName" placeholder="Enter Event Name">
