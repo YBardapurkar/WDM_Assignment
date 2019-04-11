@@ -1,5 +1,5 @@
 <?php
-	session_start()
+	session_start();
 	require 'php/validation.php';
 ?>
 
@@ -23,15 +23,6 @@
 		}
 	?>
 	<main>
-		<?php
-			echo implode(" | ",$_SESSION);
-			echo '<br>';
-			if (!$_SESSION) {
-				echo("logged out");
-			} else {
-				echo($_SESSION['email']." logged in");
-			}
-		?>
 		<div class="banner-home">
 			<div class="right">
 				<h1>For good communication <span class="red">Say It Right</span> is a tool that you should use.</h1>
