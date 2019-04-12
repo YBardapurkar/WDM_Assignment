@@ -21,7 +21,7 @@
 		}
 		// get all events confirmed by the individual user
 		else if ($_SESSION['role'] == 'individual') {
-			$query = "SELECT * FROM events join userevents on events.id = userevents.eventId where userevents.userId = :userId";
+			$query = "SELECT * FROM userevents inner join events on events.id = userevents.eventId where userevents.userId = :userId";
 			$stmt = $db->prepare($query);
 			$stmt->execute(array(':userId' => $id));
 			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);

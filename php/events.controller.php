@@ -79,3 +79,45 @@
 		header("Location: ../list_of_events.php?confirm=success");
 		exit();
 	}
+
+	// remove from 'my events' for individual user
+	else if (isset($_POST['remove_from_my_events_submit'])) {
+		$eventId = $_POST['eventId'];
+
+		// check if logged in
+		$createdBy = $_SESSION['id'];
+		if ($createdBy == null) {
+			header("Location: ../login.php?error=auth");
+			exit();
+		}
+
+		// check role
+		$role = $_SESSION['role'];
+		if ($role != 'individual') {
+			header("Location: ../list_of_events.php?error=forbidden");
+			exit();
+		}
+		$userId = $_SESSION['id'];
+
+		// check if empty
+		if (empty($createdBy)) {
+			header("Location: ../event.php?error=empty");
+			exit();
+		}
+
+		// check if already in my events
+		$query = "SELECT * FROM userevents where userId = :userId and eventId = :eventId;";
+		$stmt = $db->prepare($query);
+		$stmt->execute(array(':userId' => $userId, ':eventId' => $eventId));
+		if ($stmt->rowCount(PDO::FETCH_ASSOC) == 0) {
+			header("Location: ../list_of_events.php?error=not_found");
+			exit();
+		}
+
+		// delete from table
+		$query = "DELETE FROM userevents where userId = :userId and eventId = :eventId;";
+		$stmt = $db->prepare($query);
+		$res = $stmt->execute(array(':userId' => $userId, ':eventId' => $eventId));
+		header("Location: ../list_of_my_events.php?confirm=success");
+		exit();
+	}
