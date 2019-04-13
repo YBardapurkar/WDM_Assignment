@@ -1,5 +1,36 @@
 <?php 
-	session_start() 
+	session_start();
+
+	require 'php/config.php';
+
+	if (isset($_GET)) {
+
+		// get all products
+		$query = "SELECT * FROM products";
+		$stmt = $db->prepare($query);
+		$stmt->execute();
+		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	}
+
+	function createModal($row) {
+		require 'buy_from_us_modal.php';
+		// echo '<div id="modal-product-photo-'.$row['id'].'" class="modal">
+		// <div class="modal-content">
+		// <span class="close">&times;</span>
+		// <form id="add-to-cart-form" name="add-to-cart-form" class="profile-photo-form" action="" method="post">
+		// <figure>';
+		// if (file_exists($row['imageUrl'])) {
+		// 	echo '<img src="'.$row['imageUrl'].'">'; 
+		// } else {
+		// 	echo '<img src="imgsay/user.jpg">';
+		// }
+		// echo '<figcaption>'.'</figcaption>
+		// </figure>
+		// <input type="submit" name="profile_photo_submit" value="Change Photo" class="button-color">
+		// </form>
+		// </div>
+		// </div>';
+	}
 ?>
 
 <html>
@@ -14,7 +45,7 @@
 
 <body>
 	<?php
-		if ($_SESSION) {
+		if ((isset($_SESSION)) && isset($_SESSION['id'])) {
 			require 'header_auth.php';
 		} else {
 			require 'header.php';
@@ -27,6 +58,27 @@
 		</div>
 		<div id="wrapper">
 			<h2 class="center-heading">Buy From Us</h2>
+			<?php
+			$numProducts = count($rows, COUNT_NORMAL);
+			if ($numProducts > 0) {
+				foreach ($rows as $row) {
+					echo '<div class="shop-item-div">';
+					echo '<div>';
+					echo '<figure>';
+					echo '<img src="'.$row['imageUrl'].'">';
+					echo '<figcaption>'.$row['name'].'</figcaption>';
+					echo '</figure>';
+					echo '<p>$'.$row['price'].'</p>';
+					echo '<p>'.$row['description'].'</p>';
+					echo '<button onclick="openModal(\'modal-product-photo-'.$row['id'].'\')">Add To Cart</button>';
+					echo '</div>';
+					createModal($row);
+					echo '</div>';
+				}
+			} else {
+				echo "<div>No products found</div>";
+			}
+			?>
 			<div class="shop-item-div">
 				<div>
 					<figure>
@@ -34,7 +86,7 @@
 						<figcaption></figcaption>
 					</figure>
 					<p>$24.99</p>
-					<p>Some quick example text to build on the card title and make up the bulk of the card content</p>
+					<p>Some quick example text to build on the card title and make up the bulk of the card 	content</p>
 					<button>Add To Cart</button>
 				</div>
 			</div>
@@ -103,12 +155,14 @@
 				<p>You can see the products that you added to your cart</p>
 			</div>
 			<div class="view-cart-div">
-				<a class="button-color view-cart" href="place-order.html">Submit</a>
+				<a class="button-color view-cart" href="place_order.php">Submit</a>
 			</div>
 		</div>
 	</main>
 	<?php  
 		require 'footer.php';
 	?>
+	
+	<script type="text/javascript" src="js/buy_from_us.js"></script>
 </body>
 </html>

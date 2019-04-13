@@ -360,6 +360,18 @@ footer p {
 	text-transform: uppercase;
 }
 
+/* buy from us modal */
+
+.modal .column {
+	display: inline-block;
+	width: 50%;
+}
+
+.modal .filler-red {
+	color: red;
+	padding-bottom: 20px;
+}
+
 .popup {
 	position: fixed;
 	top: 20%;
@@ -515,11 +527,16 @@ footer p {
   width: 50%;
 }
 
-.modal .modal-content .close {
+.modal .modal-content .close,
+.modal .modal-content .close_modal{
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
+}
+
+.modal img {
+	height: 200px;
 }
 
 .close:hover,
@@ -642,6 +659,7 @@ footer p {
     border-radius: 3px;
 }
 
+/* phone */
 @media screen and (max-width: 575px) {
 	header {position: relative;}
 	header .icon {
@@ -675,8 +693,18 @@ footer p {
 	main .newsletter form  {
 		float: none;
 	}
+
+	.modal img {
+		max-height: 150px;
+		height: auto;
+
+	}
+	.modal .column {
+		width: 90%;
+	}
 }
 
+/* tablet */
 @media only screen and (min-width: 576px) and (max-width: 991px) {
 	.dashboard-row .dashboard-item-1,
 	.dashboard-row .dashboard-item-2 {
@@ -721,8 +749,13 @@ footer p {
 	main .newsletter form  {
 		float: none;
 	}
+
+	.modal .column {
+		width: 90%;
+	}
 }
 
+/* big screen */
 @media screen and (min-width: 992px){
 	.dashboard-row .dashboard-item-1,
 	.dashboard-row .dashboard-item-2 {
@@ -733,5 +766,10 @@ footer p {
 	.shop-item-div {
 		display: inline-block;
 		max-width: 32%;
+	}
+
+	.modal .column {
+		width: 38%;
+		display: inline-block;
 	}
 }
