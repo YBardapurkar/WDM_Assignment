@@ -67,12 +67,14 @@
 						$date = date_create($row['eventDate']);
 						echo '<td>'.date_format($date,"d M, Y").'</td>';
 						echo '<td>'.$row['venue'].'</td>';
-						echo '<td>
-							<form action="php/events.controller.php" method="post">
-								<input type="hidden" name="eventId" value="'.$row['id'].'" />
-								<button class="button-color" type="submit" name="add_to_my_events_submit">Confirm</button>
-							</form>
-						</td>';
+						echo '<td>';
+						if ($_SESSION['role'] == 'individual') {
+							echo '<form action="php/events.controller.php" method="post">
+									<input type="hidden" name="eventId" value="'.$row['id'].'" />
+									<button class="button-color" type="submit" name="add_to_my_events_submit">Confirm</button>
+								</form>';
+						}
+						echo '</td>';
 						echo '</tr>';
 					}
 					echo '</tbody>

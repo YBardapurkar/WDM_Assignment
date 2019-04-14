@@ -92,6 +92,7 @@
 								<form action="php/events.controller.php" method="post">
 									<input type="hidden" name="eventId" value="'.$row['id'].'" />
 									<button class="button-color" type="submit" name="modify_event_submit">Edit</button>
+									<button class="button-color" type="submit" name="delete_event_submit">Delete</button>
 								</form>
 							</td>';
 						}
@@ -100,7 +101,7 @@
 					echo '</tbody>
 					</table>';
 				} else {
-					echo "No events found";
+					echo "<p>No events found</p>";
 				}
 				echo '<a class="button-color add-new-event" href="event.php">Add new Event</a>';
 			?>

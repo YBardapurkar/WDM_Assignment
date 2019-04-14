@@ -53,7 +53,7 @@ else if (isset($_POST['add_to_my_events_submit'])) {
 	// check role
 	$role = $_SESSION['role'];
 	if ($role != 'individual') {
-		header("Location: ../list_of_events.php?error=forbidden");
+		header("Location: ../list_of_events.php?error=not_allowed");
 		exit();
 	}
 	$userId = $_SESSION['id'];
@@ -125,7 +125,44 @@ else if (isset($_POST['remove_from_my_events_submit'])) {
 
 // delete event for events user
 else if (isset($_POST['delete_event_submit'])) {
+	$eventId = $_POST['eventId'];
 
+	// check if logged in
+	$createdBy = $_SESSION['id'];
+	if ($createdBy == null) {
+		header("Location: ../login.php?error=auth");
+		exit();
+	}
+
+	// check role
+	$role = $_SESSION['role'];
+	if ($role != 'event') {
+		header("Location: ../list_of_events.php?error=not_allowed");
+		exit();
+	}
+
+	echo $eventId;
+
+	// delete event
+	try {
+		$db->beginTransaction();
+
+		$query = "DELETE from userevents where userevents.eventId = :id;";
+		$stmt = $db->prepare($query);
+		$stmt->execute(array(':id' => $eventId));
+
+		$query = "DELETE from events where events.id = :id;";
+		$stmt = $db->prepare($query);
+		$stmt->execute(array(':id' => $eventId));
+
+		$db->commit();
+	} catch(Exception $e){
+	    echo $e->getMessage();
+		$db->rollBack();
+	}
+
+	header("Location: ../list_of_my_events.php?delete=success");
+	exit();
 }
 
 ?>
