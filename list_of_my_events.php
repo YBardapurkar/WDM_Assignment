@@ -89,7 +89,7 @@
 							</td>';
 						} else if ($_SESSION['role'] == 'event') {
 							echo '<td>
-								<a class="button-color add-new-event" href="event_edit.php?eventId='.$row['id'].'">Edit Event</a>
+								<a class="button-color edit-event" href="event_edit.php?eventId='.$row['id'].'">Edit</a>
 								<form action="php/events.controller.php" method="post">
 									<input type="hidden" name="eventId" value="'.$row['id'].'" />
 									<button class="button-color" type="submit" name="delete_event_submit">Delete</button>

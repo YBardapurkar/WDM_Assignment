@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="css/sayitright.css" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link rel="shortcut icon" href="imgsay/favicon.png"/>
-
+	<script type="text/javascript" src="js/event_add.js"></script>
 </head>
 
 <body>
@@ -36,12 +36,12 @@
 			?> >
 				<div class="row">
 					<div class="column">
-						<input type="text" name="eventName" placeholder="Enter Event Name">
-						<input type="text" name="eventDate" placeholder="Enter Event Date">
-						<input type="text" name="eventVenue" placeholder="Enter Event Venue">
+						<input type="text" name="eventName" placeholder="Enter Event Name" required>
+						<input type="text" name="eventDate" placeholder="Enter Event Date" required>
+						<input type="text" name="eventVenue" placeholder="Enter Event Venue" required>
 					</div>
 					<div class="column">
-						<textarea rows="3" name="eventDescription" placeholder="Enter Description"></textarea>
+						<textarea rows="3" name="eventDescription" placeholder="Enter Description" required></textarea>
 						<input type="submit" name="event_add_submit" value="Submit" class="button-color">
 					</div>
 				</div>

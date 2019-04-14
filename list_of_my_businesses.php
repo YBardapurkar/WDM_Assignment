@@ -65,7 +65,7 @@
 						echo '<td>'.$row['description'].'</td>';
 						if ($_SESSION['role'] == 'business') {
 							echo '<td>
-								<a class="button-color add-new-event" href="business_edit.php?businessId='.$row['id'].'">Edit</a>
+								<a class="button-color edit-event" href="business_edit.php?businessId='.$row['id'].'">Edit</a>
 								<form action="php/businesses.controller.php" method="post">
 									<input type="hidden" name="businessId" value="'.$row['id'].'" />
 									<button class="button-color" type="submit" name="delete_business_submit">Delete</button>

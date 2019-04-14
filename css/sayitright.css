@@ -4,6 +4,11 @@
 	font-family: Verdana, Arial, sans-serif;
 }
 
+body {
+	width: 80%;
+	margin: auto;
+}
+
 h1 {
 	font-size: 200%;
 	font-family: sans-serif;
@@ -602,6 +607,20 @@ a.add-new-event {
 	text-transform: uppercase;
 
 	margin-top: 20px;
+}
+
+a.edit-event {
+	display: inline-block;
+	padding: 7px;
+	border: 0;
+	border-radius: 3px;
+
+	background: linear-gradient(to right, #3fcaff 0%, #a4ffb0 51%, #3fcaff 100%);
+	background-size: 200% auto;
+	color: #000033;
+	font-size: 0.7em;
+	text-decoration: none;
+	text-transform: uppercase;
 }
 
 .list-of-events form button {
