@@ -1,6 +1,10 @@
 <?php
 	session_start();
 	require 'php/validation.php';
+
+	if ((isset($_SESSION)) && isset($_SESSION['id'])) {
+		header('Location: dashboard.php');
+	}
 ?>
 
 <html>

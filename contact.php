@@ -39,7 +39,7 @@
 						<input type="text" name="firstName" placeholder="Enter First Name" required>
 						<input type="text" name="lastName" placeholder="Enter Last Name" required>
 						<input type="email" name="email" placeholder="Enter Email" required>
-						<input type="tel" name="phone" placeholder="Enter Phone" pattern="^[0-9]{10}$">
+						<input type="text" name="phone" placeholder="Enter Phone" pattern="^[0-9]{10}$">
 					</div>
 					<div class="column">
 						<textarea rows="3" maxlength='255' name="message" placeholder="Enter Message" required>

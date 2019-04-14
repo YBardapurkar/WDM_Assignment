@@ -4,7 +4,6 @@
 			<img src="imgsay/favicon.png" alt="logo" />
 		</div>
 		<ul>
-			<li><a href="index.php">Home</a></li>
 			<li><a href="dashboard.php">Dashboard</a></li>
 			<li><a href="about.php">About Us</a></li>
 			<li><a href="list_of_events.php">Events</a></li>

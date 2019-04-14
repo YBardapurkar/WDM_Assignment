@@ -40,6 +40,6 @@
 		$_SESSION['lastName'] = $row['lastName'];
 		$_SESSION['role'] = $row['role'];
 		$_SESSION['email'] = $row['email'];
-		header("Location: ../index.php?login=success");
+		header("Location: ../dashboard.php?login=success");
 	}
 ?>
