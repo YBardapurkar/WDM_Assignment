@@ -144,7 +144,7 @@ else if (isset($_POST['profile_event_submit'])) {
 	exit();
 }
 
-// update event profile
+// update business profile
 else if (isset($_POST['profile_business_submit'])) {
 	$firstName = $_POST['firstName'];
 	$businessType = $_POST['businessType'];
@@ -175,4 +175,48 @@ else if (isset($_POST['profile_business_submit'])) {
 	header("Location: ../profile.php?update=success");
 	exit();
 }
+
+// change password
+else if (isset($_POST['profile_password_submit'])) {
+	$oldPassword = $_POST['oldPassword'];
+	$newPassword = $_POST['newPassword'];
+
+	// check if empty
+	if (empty($oldPassword)) {
+		header("Location: ../profile.php?error=empty_oldPassword");
+		exit();
+	} else if (empty($newPassword)) {
+		header("Location: ../profile.php?error=empty_newPassword");
+		exit();
+	}
+
+	// check if logged in
+	$id = $_SESSION['id'];
+	if ($id == null) {
+		header("Location: ../login.php?error=auth");
+		exit();
+	}
+
+	// fetch from table
+	$query = "SELECT * FROM users where id = :id;";
+	$stmt = $db->prepare($query);
+	$stmt->execute(array(':id' => $id));
+	$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+	// check password
+	$pwdCheck = password_verify($oldPassword, $row['password']);
+	if ($pwdCheck == false) {
+		header("Location: ../profile.php?error=incorrectPassword");
+		exit();
+	}
+
+	// update password
+	$hashed_password = password_hash($newPassword, PASSWORD_DEFAULT);
+	$query = "UPDATE users SET password = :newPassword where id = :id";
+	$stmt = $db->prepare($query);
+	$stmt->execute(array(':newPassword' => $hashed_password, ':id' => $id));
+	header("Location: ../profile.php?update=success");
+	exit();
+}
+
 ?>

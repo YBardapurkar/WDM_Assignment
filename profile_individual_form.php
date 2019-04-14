@@ -13,7 +13,6 @@ if ($jsValidate) { echo ' onsubmit="return validateForm();"'; }
 	value="<?php echo $row['school']; ?>" required>
 	<input type="email" name="email" placeholder="Enter Email" disabled="true"
 	value="<?php echo $row['email']; ?>">
-	<input type="password" name="password" placeholder="Enter Password">
 
 	<input type="submit" name="profile_individual_submit" value="Save Changes" class="button-color">
 </form>

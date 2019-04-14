@@ -75,6 +75,17 @@
 						require 'profile_business_form.php';
 					}
 					?>
+					
+					<form class="profile-details-form" name="profile_password_form" action="php/profile.controller.php" method="post"
+					<?php 
+					if (!$htmlValidate) { echo ' novalidate'; }
+					if ($jsValidate) { echo ' onsubmit="return validateForm();"'; } 
+					?> >
+						<input type="password" name="oldPassword" placeholder="Enter Old Password">
+						<input type="password" name="newPassword" placeholder="Enter New Password">
+
+						<input type="submit" name="profile_password_submit" value="Change Password" class="button-color">
+					</form>
 				</div>
 			</div>
 		</div>
