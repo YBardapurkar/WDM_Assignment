@@ -139,7 +139,7 @@
 				<p>You can see the products that you added to your cart</p>
 			</div>
 			<div class="view-cart-div">
-				<a class="button-color view-cart" href="place_order.php">Submit</a>';
+				<a class="button-color view-cart" href="place_order.php">Submit</a>
 			</div>
 		</div>
 	</main>
