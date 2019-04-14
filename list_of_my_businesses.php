@@ -6,16 +6,17 @@
 	if (isset($_GET)) {
 
 		// check if session exists
+		$id = $_SESSION['id'];
 		$role = $_SESSION['role'];
-		if ($role == null) {
+		if ($role != 'business') {
 			header("Location: login.php?error=auth");
 			exit();
 		}
 
-		// get all events
-		$query = "SELECT * FROM events";
+		// get all events created by the event user
+		$query = "SELECT * FROM businesses where businesses.createdBy = :createdBy";
 		$stmt = $db->prepare($query);
-		$stmt->execute();
+		$stmt->execute(array(':createdBy' => $id));
 		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	}
 ?>
@@ -40,18 +41,16 @@
 	?>
 	<main>
 		<div id="wrapper">
-			<h2>List of Events</h2>
+			<h2>List of Businesses</h2>
 			<?php
-				$numEvents = count($rows, COUNT_NORMAL);
-				if ($numEvents > 0) {
+				$numBusinesses = count($rows, COUNT_NORMAL);
+				if ($numBusinesses > 0) {
 					echo '<table class="list-of-events">
 						<thead>
 							<tr>
-								<th>Events</th>
+								<th>Name</th>
 								<th class="column-description">Description</th>
-								<th>Date</th>
-								<th>City</th>
-								<th>Confirmation</th>
+								<th>Type</th>
 							</tr>
 						</thead>
 						<tfoot></tfoot>
@@ -60,21 +59,13 @@
 						echo '<tr>';
 						echo '<td>'.$row['name'].'</td>';
 						echo '<td>'.$row['description'].'</td>';
-						$date = date_create($row['eventDate']);
-						echo '<td>'.date_format($date,"d M, Y").'</td>';
-						echo '<td>'.$row['venue'].'</td>';
-						echo '<td>
-							<form action="php/events.controller.php" method="post">
-								<input type="hidden" name="eventId" value="'.$row['id'].'" />
-								<button class="button-color" type="submit" name="add_to_my_events_submit">Confirm</button>
-							</form>
-						</td>';
+						echo '<td>'.$row['businessType'].'</td>';
 						echo '</tr>';
 					}
 					echo '</tbody>
 					</table>';
 				} else {
-					echo "No events found";
+					echo "No Businesses found";
 				}
 			?>
 		</div>

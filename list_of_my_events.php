@@ -76,12 +76,21 @@
 						$date = date_create($row['eventDate']);
 						echo '<td>'.date_format($date,"d M, Y").'</td>';
 						echo '<td>'.$row['venue'].'</td>';
-						echo '<td>
-							<form action="php/events.controller.php" method="post">
-								<input type="hidden" name="eventId" value="'.$row['id'].'" />
-								<button type="submit" name="remove_from_my_events_submit">Remove</button>
-							</form>
-						</td>';
+						if ($_SESSION['role'] == 'individual') {
+							echo '<td>
+								<form action="php/events.controller.php" method="post">
+									<input type="hidden" name="eventId" value="'.$row['id'].'" />
+									<button class="button-color" type="submit" name="remove_from_my_events_submit">Remove</button>
+								</form>
+							</td>';
+						} else if ($_SESSION['role'] == 'event') {
+							echo '<td>
+								<form action="php/events.controller.php" method="post">
+									<input type="hidden" name="eventId" value="'.$row['id'].'" />
+									<button class="button-color" type="submit" name="modify_event_submit">Edit</button>
+								</form>
+							</td>';
+						}
 						echo '</tr>';
 					}
 					echo '</tbody>
@@ -89,6 +98,7 @@
 				} else {
 					echo "No events found";
 				}
+				echo '<a class="button-color add-new-event" href="event.php">Add new Event</a>';
 			?>
 		</div>
 	</main>
