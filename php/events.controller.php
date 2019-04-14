@@ -123,6 +123,43 @@ else if (isset($_POST['remove_from_my_events_submit'])) {
 	exit();
 }
 
+// edit event, for event user
+else if (isset($_POST['event_edit_submit'])) {
+	$eventId = $_POST['eventId'];
+	$eventName = $_POST['eventName'];
+	$eventDate = $_POST['eventDate'];
+	$eventVenue = $_POST['eventVenue'];
+	$eventDescription = $_POST['eventDescription'];
+
+	// check if logged in
+	$createdBy = $_SESSION['id'];
+	if ($createdBy == null) {
+		header("Location: ../login.php?error=auth");
+		exit();
+	}
+
+	// check role
+	$role = $_SESSION['role'];
+	if ($role != 'event') {
+		header("Location: ../list_of_events.php?error=not_allowed");
+		exit();
+	}
+	// check if empty
+	if (empty($eventName) || empty($eventDate) || empty($eventVenue) || empty($eventDescription)) {
+		header("Location: ../event.php?error=empty");
+		exit();
+	}
+
+	// create event
+	$timestamp = strtotime($eventDate);
+	$query = "UPDATE events set name = :name, description = :description, eventDate = :eventDate, venue = :venue where events.id = :eventId";
+	$stmt = $db->prepare($query);
+	$res = $stmt->execute(array(':name' => $eventName, ':description' => $eventDescription, ':eventDate' => date('Y-m-d H:i:s', $timestamp), ':venue' => $eventVenue, ':eventId' => $eventId));
+
+	header("Location: ../list_of_my_events.php?confirm=success");
+	exit();
+}
+
 // delete event for events user
 else if (isset($_POST['delete_event_submit'])) {
 	$eventId = $_POST['eventId'];
