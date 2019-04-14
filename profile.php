@@ -62,21 +62,15 @@
 					</form>
 				</div>
 				<div class="profile-details-column">
-					<form class="profile-details-form">
-						<input type="text" name="firstName" placeholder="Enter First Name"
-						value="<?php echo $row['firstName']; ?>">
-						<input type="text" name="lastName" placeholder="Enter Last Name"
-						value="<?php echo $row['lastName']; ?>">
-						<input type="text" name="placeOfWork" placeholder="Enter Place of Work"
-						value="<?php echo $row['placeOfWork']; ?>">
-						<input type="text" name="school" placeholder="Enter School"
-						value="<?php echo $row['school']; ?>">
-						<input type="email" name="email" placeholder="Enter Email" disabled="true"
-						value="<?php echo $row['email']; ?>">
-						<input type="password" name="password" placeholder="Enter Password">
-
-						<input type="submit" name="profile-details-submit" value="Save Changes" class="button-color">
-					</form>
+					<?php
+					if ($_SESSION['role'] == 'individual') {
+						require 'profile_individual_form.php';
+					} else if ($_SESSION['role'] == 'event') {
+						require 'profile_event_form.php';
+					} else if ($_SESSION['role'] == 'business') {
+						require 'profile_business_form.php';
+					}
+					?>
 				</div>
 			</div>
 		</div>

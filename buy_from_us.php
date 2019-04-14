@@ -139,12 +139,7 @@
 				<p>You can see the products that you added to your cart</p>
 			</div>
 			<div class="view-cart-div">
-				<?php 
-				$numCart = count($_SESSION['cart'], COUNT_NORMAL);
-				if ($numCart > 0) {
-					echo '<a class="button-color view-cart" href="place_order.php">Submit</a>';
-				} 
-				?>
+				<a class="button-color view-cart" href="place_order.php">Submit</a>';
 			</div>
 		</div>
 	</main>
