@@ -25,7 +25,7 @@ if (isset($_POST['event_add_submit'])) {
 	}
 	// check if empty
 	if (empty($eventName) || empty($eventDate) || empty($eventVenue) || empty($eventDescription)) {
-		header("Location: ../event.php?error=empty");
+		header("Location: ../event_add.php?error=empty");
 		exit();
 	}
 
@@ -60,7 +60,7 @@ else if (isset($_POST['add_to_my_events_submit'])) {
 
 	// check if empty
 	if (empty($createdBy)) {
-		header("Location: ../event.php?error=empty");
+		header("Location: ../list_of_events.php?error=not_found");
 		exit();
 	}
 
@@ -102,7 +102,7 @@ else if (isset($_POST['remove_from_my_events_submit'])) {
 
 	// check if empty
 	if (empty($createdBy)) {
-		header("Location: ../event.php?error=empty");
+		header("Location: ../list_of_my_events.php?error=empty");
 		exit();
 	}
 
@@ -146,11 +146,11 @@ else if (isset($_POST['event_edit_submit'])) {
 	}
 	// check if empty
 	if (empty($eventName) || empty($eventDate) || empty($eventVenue) || empty($eventDescription)) {
-		header("Location: ../event.php?error=empty");
+		header("Location: ../event_edit.php?error=empty");
 		exit();
 	}
 
-	// create event
+	// edit event
 	$timestamp = strtotime($eventDate);
 	$query = "UPDATE events set name = :name, description = :description, eventDate = :eventDate, venue = :venue where events.id = :eventId";
 	$stmt = $db->prepare($query);

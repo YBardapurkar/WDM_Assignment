@@ -103,7 +103,7 @@
 				} else {
 					echo "<p>No events found</p>";
 				}
-				echo '<a class="button-color add-new-event" href="event.php">Add new Event</a>';
+				echo '<a class="button-color add-new-event" href="event_add.php">Add new Event</a>';
 			?>
 		</div>
 	</main>

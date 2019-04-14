@@ -515,6 +515,13 @@ footer p {
 	margin: auto;
 }
 
+.profile-details-form input[type="radio"] {
+    display: inline;
+    width: auto;
+    font-size: 0.8em;
+    margin-left: 5%;
+}
+
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */

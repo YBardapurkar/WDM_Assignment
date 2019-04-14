@@ -1,5 +1,6 @@
 <?php 
-	session_start() 
+	session_start();
+	require 'php/config.php';
 ?>
 
 <html>
@@ -30,31 +31,56 @@
 				<div class="dashboard-item-1 blue">
 					<div class="top">
 						<i class="fas fa-globe-americas"></i>
-						<p class="count">26</p>
+						<p class="count">
+							<?php
+							$nRows = $db->query('select count(*) from events')->fetchColumn(); 
+							echo $nRows;
+							?>
+						</p>
 						<p class="name">activities performed</p>
 					</div>
 					<div class="bottom">
-						<p>Total Made</p>
+						<p>Total Events</p>
 					</div>
 				</div>
 				<div class="dashboard-item-1 green">
 					<div class="top">
 						<i class="fas fa-users"></i>
-						<p class="count">18</p>
+						<p class="count">
+							<?php
+							if ($_SESSION['role'] == 'event') {
+								$query = 'SELECT count(*) from events where createdBy = :id';
+								$stmt = $db->prepare($query);
+								$stmt->execute(array(':id' => $_SESSION['id']));
+								$nRows = $stmt->rowCount(PDO::FETCH_ASSOC);
+							} else {
+								$query = 'SELECT count(*) from userevents where userevents.userId = :id;';
+								$stmt = $db->prepare($query);
+								$stmt->execute(array(':id' => $_SESSION['id']));
+								$nRows = $stmt->rowCount(PDO::FETCH_ASSOC);
+							}
+							echo $nRows;
+							?>
+						</p>
 						<p class="name">activities performed</p>
 					</div>
 					<div class="bottom">
-						<p>Conferences</p>
+						<p>My Events</p>
 					</div>
 				</div>
 				<div class="dashboard-item-1 yellow">
 					<div class="top">
 						<i class="fas fa-star"></i>
-						<p class="count">8</p>
+						<p class="count">
+							<?php
+							$nRows = $db->query('select count(*) from businesses')->fetchColumn(); 
+							echo $nRows;
+							?>
+						</p>
 						<p class="name">activities performed</p>
 					</div>
 					<div class="bottom">
-						<p>Events</p>
+						<p>Total Businesses</p>
 					</div>
 				</div>
 				<div class="dashboard-item-1 grey">
@@ -64,7 +90,7 @@
 						<p class="name">activities performed</p>
 					</div>
 					<div class="bottom">
-						<p>Activities</p>
+						<p>My Businesses</p>
 					</div>
 				</div>
 			</div>

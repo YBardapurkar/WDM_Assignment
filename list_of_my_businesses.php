@@ -13,7 +13,7 @@
 			exit();
 		}
 
-		// get all events created by the event user
+		// get all businesses created by the business user
 		$query = "SELECT * FROM businesses where businesses.createdBy = :createdBy";
 		$stmt = $db->prepare($query);
 		$stmt->execute(array(':createdBy' => $id));
@@ -54,7 +54,7 @@
 							<tr>
 								<th>Name</th>
 								<th class="column-description">Description</th>
-								<th>Type</th>
+								<th>Actions</th>
 							</tr>
 						</thead>
 						<tfoot></tfoot>
@@ -63,14 +63,23 @@
 						echo '<tr>';
 						echo '<td>'.$row['name'].'</td>';
 						echo '<td>'.$row['description'].'</td>';
-						echo '<td>'.$row['businessType'].'</td>';
+						if ($_SESSION['role'] == 'business') {
+							echo '<td>
+								<a class="button-color add-new-event" href="business_edit.php?businessId='.$row['id'].'">Edit</a>
+								<form action="php/businesses.controller.php" method="post">
+									<input type="hidden" name="businessId" value="'.$row['id'].'" />
+									<button class="button-color" type="submit" name="delete_business_submit">Delete</button>
+								</form>
+							</td>';
+						}
 						echo '</tr>';
 					}
 					echo '</tbody>
 					</table>';
 				} else {
-					echo "No Businesses found";
+					echo "<p>No Businesses found</p>";
 				}
+				echo '<a class="button-color add-new-event" href="business_add.php">Add new Business</a>';
 			?>
 		</div>
 	</main>
