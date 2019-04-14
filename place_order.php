@@ -13,7 +13,6 @@
 			$cart = array();
 		}
 		$rows = array();
-
 		$totalPrice = 0;
 
 		// get product details
@@ -42,7 +41,7 @@
 	<link rel="stylesheet" href="css/sayitright.css" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link rel="shortcut icon" href="imgsay/favicon.png"/>
-	<script src="js/login.js"></script>
+	<script src="js/place_order.js"></script>
 </head>
 
 <body>
@@ -56,24 +55,29 @@
 	<main>
 		<div id="wrapper" class="place-order">
 			<h2 class="center-heading">Place Order</h2>
-			<form class="place-order-form" name="place_order_form" action="php/place_order.controller.php" method="post">
+			<form class="place-order-form" name="place_order_form" action="php/place_order.controller.php" method="post"
+			<?php 
+			if (!$htmlValidate) { echo ' novalidate'; }
+			if ($jsValidate) { echo ' onsubmit="return validateForm();"'; } 
+			?> >
 				<div class="row">
 					<div class="column">
 						<h3>Contact Information</h3>
-						<input type="email" name="email" placeholder="Enter Email">
+						<input type="email" name="email" placeholder="Enter Email" required>
 						<h3>Shipping Address</h3>
-						<input class="half" type="text" name="firstName" placeholder="Enter First Name">
-						<input class="half" type="text" name="lastName" placeholder="Enter Last Name">
+						<input class="half" type="text" name="firstName" placeholder="Enter First Name" required>
+						<input class="half" type="text" name="lastName" placeholder="Enter Last Name" required>
 
-						<input type="text" name="address" placeholder="Enter Address">
+						<input type="text" name="address" placeholder="Enter Address" required>
 						<input type="text" name="apartment" placeholder="Enter Apartment, Suite etc">
-						<input type="text" name="state" placeholder="Enter State">
+						<input type="text" class="half" name="city" placeholder="Enter City" required>
+						<input type="text" class="half" name="state" placeholder="Enter State" required>
 
-						<select class="half" name="language">
+						<select class="half" name="language" required>
 							<option value="english" selected>English</option>
 							<option value="spanish">Spanish</option>
 						</select>
-						<input class="half" type="text" name="zip" placeholder="Enter Postal Code">
+						<input class="half" type="text" name="zip" placeholder="Enter Postal Code" required>
 
 						<input type="submit" name="place_order_submit" value="Place Order" class="button-color">
 					</div>

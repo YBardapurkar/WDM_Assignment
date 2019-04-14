@@ -20,9 +20,9 @@ require 'php/validation.php';
 			<div class="column">
 				<label for="quantity">Quantity</label>
 				<input type="hidden" name="productId" value="<?php echo $row['id']?>">
-				<input type="number" name="quantity" placeholder="Quantity">
+				<input type="number" name="quantity" placeholder="Quantity" value="1">
 				<p class="filler-red">Note: some quick example text to build on the card title and make up the bulk of the card's content!</p>
-				<input type="submit" name="add_to_cart_submit" value="Change Photo" class="button-color">
+				<input type="submit" name="add_to_cart_submit" value="Add to Cart" class="button-color">
 			</div>
 		</form>
 	</div>

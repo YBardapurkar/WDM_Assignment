@@ -14,22 +14,6 @@
 
 	function createModal($row) {
 		require 'buy_from_us_modal.php';
-		// echo '<div id="modal-product-photo-'.$row['id'].'" class="modal">
-		// <div class="modal-content">
-		// <span class="close">&times;</span>
-		// <form id="add-to-cart-form" name="add-to-cart-form" class="profile-photo-form" action="" method="post">
-		// <figure>';
-		// if (file_exists($row['imageUrl'])) {
-		// 	echo '<img src="'.$row['imageUrl'].'">'; 
-		// } else {
-		// 	echo '<img src="imgsay/user.jpg">';
-		// }
-		// echo '<figcaption>'.'</figcaption>
-		// </figure>
-		// <input type="submit" name="profile_photo_submit" value="Change Photo" class="button-color">
-		// </form>
-		// </div>
-		// </div>';
 	}
 ?>
 
@@ -155,7 +139,12 @@
 				<p>You can see the products that you added to your cart</p>
 			</div>
 			<div class="view-cart-div">
-				<a class="button-color view-cart" href="place_order.php">Submit</a>
+				<?php 
+				$numCart = count($_SESSION['cart'], COUNT_NORMAL);
+				if ($numCart > 0) {
+					echo '<a class="button-color view-cart" href="place_order.php">Submit</a>';
+				} 
+				?>
 			</div>
 		</div>
 	</main>

@@ -2,6 +2,9 @@
 	require 'config.php';
 	session_start();
 
+	$mailFormat = "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/";
+	$zipFormat = "/^[0-9]{5}/";
+
 	// place order
 	if (isset($_POST['place_order_submit'])) {
 		$email = $_POST['email'];
@@ -13,7 +16,35 @@
 		$state = $_POST['state'];
 		$zip = $_POST['zip'];
 
-		print_r($_POST);
+		// check if empty
+		if (empty($email)) {
+			header("Location: ../place_order.php?error=empty_email");
+			exit();
+		} else if (!preg_match($mailFormat, $email)) {
+			header("Location: ../place_order.php?error=invalid_email");
+			exit();
+		} else if (empty($firstName)) {
+			header("Location: ../place_order.php?error=empty_firstname");
+			exit();
+		} else if (empty($lastName)) {
+			header("Location: ../place_order.php?error=empty_lastName");
+			exit();
+		} else if (empty($address)) {
+			header("Location: ../place_order.php?error=empty_address");
+			exit();
+		} else if (empty($language)) {
+			header("Location: ../place_order.php?error=empty_language");
+			exit();
+		}  else if (empty($state)) {
+			header("Location: ../place_order.php?error=empty_state");
+			exit();
+		} else if (empty($zip)) {
+			header("Location: ../place_order.php?error=empty_zip");
+			exit();
+		} else if (!preg_match($zipFormat, $zip)) {
+			header("Location: ../place_order.php?error=invalid_zip");
+			exit();
+		}
 
 		// add to orders table
 		try {
