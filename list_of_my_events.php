@@ -45,7 +45,7 @@
 
 <body>
 	<?php
-		if ($_SESSION) {
+		if ((isset($_SESSION)) && isset($_SESSION['id'])) {
 			require 'header_auth.php';
 		} else {
 			require 'header.php';
