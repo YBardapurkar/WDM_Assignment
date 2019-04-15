@@ -23,9 +23,19 @@ if (isset($_POST['event_add_submit'])) {
 		header("Location: ../list_of_events.php?error=not_allowed");
 		exit();
 	}
+
 	// check if empty
-	if (empty($eventName) || empty($eventDate) || empty($eventVenue) || empty($eventDescription)) {
-		header("Location: ../event_add.php?error=empty");
+	if (empty($eventName)) {
+		header("Location: ../event_add.php?error=empty_eventName");
+		exit();
+	} else if (empty($eventDate)) {
+		header("Location: ../event_add.php?error=empty_eventDate");
+		exit();
+	} else if (empty($eventVenue)) {
+		header("Location: ../event_add.php?error=empty_eventVenue");
+		exit();
+	} else if (empty($eventDescription)) {
+		header("Location: ../event_add.php?error=empty_eventDescription");
 		exit();
 	}
 
@@ -144,9 +154,19 @@ else if (isset($_POST['event_edit_submit'])) {
 		header("Location: ../list_of_events.php?error=not_allowed");
 		exit();
 	}
+	
 	// check if empty
-	if (empty($eventName) || empty($eventDate) || empty($eventVenue) || empty($eventDescription)) {
-		header("Location: ../event_edit.php?error=empty");
+	if (empty($eventName)) {
+		header("Location: ../event_add.php?error=empty_eventName");
+		exit();
+	} else if (empty($eventDate)) {
+		header("Location: ../event_add.php?error=empty_eventDate");
+		exit();
+	} else if (empty($eventVenue)) {
+		header("Location: ../event_add.php?error=empty_eventVenue");
+		exit();
+	} else if (empty($eventDescription)) {
+		header("Location: ../event_add.php?error=empty_eventDescription");
 		exit();
 	}
 

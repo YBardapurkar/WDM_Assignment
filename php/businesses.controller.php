@@ -21,9 +21,13 @@ if (isset($_POST['business_add_submit'])) {
 		header("Location: ../list_of_businesses.php?error=not_allowed");
 		exit();
 	}
+
 	// check if empty
-	if (empty($businessName) || empty($businessDescription)) {
-		header("Location: ../business_add.php?error=empty");
+	if (empty($businessName)) {
+		header("Location: ../business_add.php?error=empty_businessName");
+		exit();
+	} else if (empty($businessDescription)) {
+		header("Location: ../business_add.php?error=empty_businessDescription");
 		exit();
 	}
 
@@ -55,9 +59,13 @@ else if (isset($_POST['business_edit_submit'])) {
 		header("Location: ../list_of_my_businesses.php?error=not_allowed");
 		exit();
 	}
+	
 	// check if empty
-	if (empty($businessName) || empty($businessDescription)) {
-		header("Location: ../business_edit.php?error=empty");
+	if (empty($businessName)) {
+		header("Location: ../business_add.php?error=empty_businessName");
+		exit();
+	} else if (empty($businessDescription)) {
+		header("Location: ../business_add.php?error=empty_businessDescription");
 		exit();
 	}
 

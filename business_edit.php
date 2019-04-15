@@ -54,7 +54,7 @@
 	?>
 	<main>
 		<div id="wrapper" class="signup-div">
-			<h2 class="center-heading">Edit business</h2>
+			<h2 class="center-heading">Edit Business</h2>
 			<form class="contact-us-form" name="business_edit_form" action="php/businesses.controller.php" method="post"
 			<?php 
 			if (!$htmlValidate) { echo ' novalidate'; }
@@ -67,8 +67,7 @@
 						value="<?php echo $row['name']; ?>" required>
 					</div>
 					<div class="column">
-						<textarea rows="3" name="businessDescription" placeholder="Enter Description"
-						value="<?php echo $row['description']; ?>" required></textarea>
+						<textarea rows="3" name="businessDescription" placeholder="Enter Description" required><?php echo $row['description']; ?></textarea>
 						<input type="submit" name="business_edit_submit" value="Submit" class="button-color">
 					</div>
 				</div>

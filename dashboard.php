@@ -32,10 +32,13 @@
 					<div class="top">
 						<i class="fas fa-globe-americas"></i>
 						<p class="count">
-							<?php
-							$nRows = $db->query('select count(*) from events')->fetchColumn(); 
-							echo $nRows;
-							?>
+								<?php
+								$query = 'SELECT count(*) from events';
+								$stmt = $db->prepare($query);
+								$stmt->execute();
+								$nRows = $stmt->fetchColumn();
+								echo $nRows;
+								?>
 						</p>
 						<p class="name">activities performed</p>
 					</div>
@@ -52,12 +55,12 @@
 								$query = 'SELECT count(*) from events where createdBy = :id';
 								$stmt = $db->prepare($query);
 								$stmt->execute(array(':id' => $_SESSION['id']));
-								$nRows = $stmt->rowCount(PDO::FETCH_ASSOC);
+								$nRows = $stmt->fetchColumn();
 							} else {
 								$query = 'SELECT count(*) from userevents where userevents.userId = :id;';
 								$stmt = $db->prepare($query);
 								$stmt->execute(array(':id' => $_SESSION['id']));
-								$nRows = $stmt->rowCount(PDO::FETCH_ASSOC);
+								$nRows = $stmt->fetchColumn();
 							}
 							echo $nRows;
 							?>
@@ -73,7 +76,10 @@
 						<i class="fas fa-star"></i>
 						<p class="count">
 							<?php
-							$nRows = $db->query('select count(*) from businesses')->fetchColumn(); 
+							$query = 'SELECT count(*) from businesses';
+							$stmt = $db->prepare($query);
+							$stmt->execute();
+							$nRows = $stmt->fetchColumn();
 							echo $nRows;
 							?>
 						</p>
@@ -86,7 +92,15 @@
 				<div class="dashboard-item-1 grey">
 					<div class="top">
 						<i class="fas fa-trophy"></i>
-						<p class="count">14</p>
+						<p class="count">
+							<?php
+							$query = 'SELECT count(*) from businesses where createdBy = :id';
+							$stmt = $db->prepare($query);
+							$stmt->execute(array(':id' => $_SESSION['id']));
+							$nRows = $stmt->fetchColumn();
+							echo $nRows;
+							?>
+						</p>
 						<p class="name">activities performed</p>
 					</div>
 					<div class="bottom">

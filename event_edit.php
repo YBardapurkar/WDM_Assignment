@@ -71,8 +71,7 @@
 						value="<?php echo $row['venue']; ?>" required>
 					</div>
 					<div class="column">
-						<textarea rows="3" name="eventDescription" placeholder="Enter Description"
-						value="<?php echo $row['description']; ?>" required></textarea>
+						<textarea rows="3" name="eventDescription" placeholder="Enter Description" required><?php echo $row['description']; ?></textarea>
 						<input type="submit" name="event_edit_submit" value="Submit" class="button-color">
 					</div>
 				</div>

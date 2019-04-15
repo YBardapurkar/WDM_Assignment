@@ -50,6 +50,7 @@
 			$numProducts = count($rows, COUNT_NORMAL);
 			if ($numProducts > 0) {
 				foreach ($rows as $row) {
+					// require 'buy_from_us_item.php';
 					echo '<div class="shop-item-div">';
 					echo '<div>';
 					echo '<figure>';
@@ -67,73 +68,6 @@
 				echo "<div>No products found</div>";
 			}
 			?>
-			<div class="shop-item-div">
-				<div>
-					<figure>
-						<img src="imgsay/franela1.jpg">
-						<figcaption></figcaption>
-					</figure>
-					<p>$24.99</p>
-					<p>Some quick example text to build on the card title and make up the bulk of the card 	content</p>
-					<button>Add To Cart</button>
-				</div>
-			</div>
-			<div class="shop-item-div">
-				<div>
-					<figure>
-						<img src="imgsay/taza1.png">
-						<figcaption></figcaption>
-					</figure>
-					<p>$24.99</p>
-					<p>Some quick example text to build on the card title and make up the bulk of the card content</p>
-					<button>Add To Cart</button>
-				</div>
-			</div>
-			<div class="shop-item-div">
-				<div>
-					<figure>
-						<img src="imgsay/franela2.jpg">
-						<figcaption></figcaption>
-					</figure>
-					<p>$24.99</p>
-					<p>Some quick example text to build on the card title and make up the bulk of the card content</p>
-					<button>Add To Cart</button>
-				</div>
-			</div>
-			<div class="shop-item-div">
-				<div>
-					<figure>
-						<img src="imgsay/taza2.png">
-						<figcaption></figcaption>
-					</figure>
-					<p>$24.99</p>
-					<p>Some quick example text to build on the card title and make up the bulk of the card content</p>
-					<button>Add To Cart</button>
-				</div>
-
-			</div>
-			<div class="shop-item-div">
-				<div>
-					<figure>
-						<img src="imgsay/franela3.jpg">
-						<figcaption></figcaption>
-					</figure>
-					<p>$24.99</p>
-					<p>Some quick example text to build on the card title and make up the bulk of the card content</p>
-					<button>Add To Cart</button>
-				</div>
-				
-			</div>
-			<div class="shop-item-div">
-				<div>
-					<figure>
-						<img src="imgsay/taza3.png">
-						<figcaption></figcaption>
-					</figure>
-					<p>$24.99</p>
-					<p>Some quick example text to build on the card title and make up the bulk of the card content</p>
-					<button>Add To Cart</button>
-				</div>
 			</div>
 		</div>
 

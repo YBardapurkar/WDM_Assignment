@@ -46,8 +46,7 @@
 						<input type="text" name="phone" placeholder="Enter Phone" pattern="^[0-9]{10}$">
 					</div>
 					<div class="column">
-						<textarea rows="3" maxlength='255' name="message" placeholder="Enter Message" required>
-						</textarea>
+						<textarea rows="3" maxlength='255' name="message" placeholder="Enter Message" required></textarea>
 						<input type="submit" name="contact_submit" value="Submit" class="button-color">
 					</div>
 				</div>

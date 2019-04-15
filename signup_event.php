@@ -36,7 +36,7 @@
 			<?php 
 			if (!$htmlValidate) { echo ' novalidate'; }
 			if ($jsValidate) { echo ' onsubmit="return validateForm();"'; } 
-			?> >>
+			?> >
 				<h2 class="center-heading">Select the type of user</h2>
 				<ul class="user-type">
 					<li>
