@@ -27,6 +27,11 @@
 	?>
 	<main>
 		<div id="wrapper">
+			<h1>
+				<?php
+				echo 'welcome to the '.$_SESSION["role"].' landing page' 
+				?>
+			</h1>
 			<div class="dashboard-row">
 				<div class="dashboard-item-1 blue">
 					<div class="top">
